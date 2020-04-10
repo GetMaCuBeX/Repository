@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.web.*?>
+<?import java.net.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="685.0" prefWidth="1083.0" stylesheets="@css/tlauncher.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tlauncher.ControllerTLauncher">
+   <bottom>
+      <HBox prefHeight="76.0" prefWidth="638.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuButton id="menubutton" mnemonicParsing="false" prefHeight="56.0" prefWidth="103.0" text="MenuButton">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </MenuButton>
+            <MenuButton id="menubutton" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="111.0" text="MenuButton">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+            </MenuButton>
+            <ComboBox id="cbbox" fx:id="cbbox" prefHeight="56.0" prefWidth="241.0" promptText="Select Information" visibleRowCount="8" />
+            <Button id="btnEnter" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="159.0" style="-fx-background-color: #ECC13F;" text="Enter" />
+            <Pane prefHeight="56.0" prefWidth="104.0" HBox.hgrow="ALWAYS" />
+            <Button fx:id="button1" mnemonicParsing="false" prefHeight="56.0" prefWidth="68.0" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+   </bottom>
+   <right>
+      <VBox prefHeight="607.0" prefWidth="214.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label id="linkIcon" fx:id="label1" contentDisplay="GRAPHIC_ONLY" minHeight="60.0" onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExit" prefHeight="60.0" prefWidth="51.0" style="-fx-background-color: #599AC5;" textAlignment="CENTER">
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </Label>
+                  <Label id="linkLabel" contentDisplay="CENTER" minHeight="60.0" onMouseClicked="#handleLabel" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExit" prefHeight="60.0" prefWidth="223.0" text="How To Play" textAlignment="CENTER">
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="20.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label id="linkIcon" fx:id="label11" contentDisplay="GRAPHIC_ONLY" minHeight="60.0" onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExit" prefHeight="60.0" prefWidth="51.0" style="-fx-background-color: #599AC5;" textAlignment="CENTER">
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </Label>
+                  <Label id="linkLabel" contentDisplay="CENTER" minHeight="60.0" onMouseClicked="#handleLabel" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExit" prefHeight="60.0" prefWidth="224.0" text="Install Skin" textAlignment="CENTER">
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="20.0" layoutY="103.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label id="linkIcon" fx:id="label111" contentDisplay="GRAPHIC_ONLY" minHeight="60.0" onMouseClicked="#onMouseClicked" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExit" prefHeight="60.0" prefWidth="51.0" style="-fx-background-color: #599AC5;" textAlignment="CENTER">
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </Label>
+                  <Label id="linkLabel" contentDisplay="CENTER" minHeight="60.0" onMouseClicked="#handleLabel" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExit" prefHeight="60.0" prefWidth="225.0" text="Animate Capes" textAlignment="CENTER">
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <Pane prefHeight="1000.0" prefWidth="224.0" VBox.vgrow="ALWAYS" />
+            <Button id="btnEnter" mnemonicParsing="false" prefHeight="18.0" prefWidth="194.0" text="Enter " />
+            <Button id="btnbtn" fx:id="btn1" graphicTextGap="10.0" minHeight="50.0" mnemonicParsing="false" onAction="#btn1Clicked" prefHeight="50.0" prefWidth="309.0" text="Login" />
+            <Button id="btnbtn" fx:id="btn2" graphicTextGap="10.0" minHeight="50.0" mnemonicParsing="false" onAction="#btn2Clicked" prefHeight="50.0" prefWidth="339.0" text="Register" />
+            <Button id="btnbtn" fx:id="btn11" graphicTextGap="10.0" layoutX="20.0" layoutY="442.0" minHeight="50.0" mnemonicParsing="false" onAction="#btn1Clicked" prefHeight="50.0" prefWidth="309.0" text="Settings" />
+            <Button id="btnbtn" fx:id="btn111" graphicTextGap="10.0" layoutX="20.0" layoutY="502.0" minHeight="50.0" mnemonicParsing="false" onAction="#btn1Clicked" prefHeight="50.0" prefWidth="309.0" text="Visit" />
+         </children>
+         <padding>
+            <Insets left="10.0" right="10.0" />
+         </padding>
+      </VBox>
+   </right>
+   <center>
+      <TabPane prefHeight="344.0" prefWidth="367.0" style="-fx-border-color: #2196F3;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Untitled Tab 1">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="378.0" prefWidth="374.0">
+                     <children>
+                        <ChoiceBox layoutX="14.0" layoutY="14.0" prefHeight="68.0" prefWidth="229.0" />
+                        <TextField layoutX="14.0" layoutY="102.0" prefHeight="50.0" prefWidth="203.0" />
+                        <Text layoutX="14.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="136.13671875" />
+                        <Label id="linkLabel" contentDisplay="CENTER" layoutY="451.0" minHeight="60.0" onMouseClicked="#handleLabel" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExit" prefHeight="60.0" prefWidth="49.0" style="-fx-background-radius: 0 50 50 0;" text="A" textAlignment="CENTER">
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Untitled Tab 2">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TreeTableView layoutX="14.0" layoutY="14.0" prefHeight="416.0" prefWidth="247.0">
+                          <columns>
+                            <TreeTableColumn prefWidth="75.0" text="C1" />
+                            <TreeTableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                        </TreeTableView>
+                        <TreeView layoutX="273.0" layoutY="14.0" prefHeight="418.0" prefWidth="210.0" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+   <top>
+      <VBox prefHeight="34.0" prefWidth="830.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                        <MenuItem mnemonicParsing="false" text="Delete">
+                           <accelerator>
+                              <KeyCodeCombination alt="DOWN" code="D" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem id="mniHelp" mnemonicParsing="false" onAction="#help" onMenuValidation="#help" text="About">
+                           <accelerator>
+                              <KeyCodeCombination alt="ANY" code="F1" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="10.0" />
+         </padding>
+      </VBox>
+   </top>
+   <left>
+      <VBox prefHeight="840.0" prefWidth="286.0">
+         <children>
+            <TextArea fx:id="ta1" prefHeight="409.0" prefWidth="209.0" text="Text Area&#10;" wrapText="true" />
+            <TextArea fx:id="ta2" layoutX="10.0" layoutY="10.0" prefHeight="328.0" prefWidth="286.0" text="&#10;" wrapText="true" />
+         </children>
+         <BorderPane.margin>
+            <Insets left="10.0" right="10.0" />
+         </BorderPane.margin>
+      </VBox>
+   </left>
+</BorderPane>

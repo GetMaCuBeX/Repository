@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXColorPicker?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="ap" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="862.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mcbx.main.Scene1Controller">
+   <children>
+      <Button fx:id="botton" layoutX="503.0" layoutY="19.0" mnemonicParsing="false" onAction="#setText" prefHeight="51.0" prefWidth="130.0" text="PRESS ESC" />
+      <ColorPicker layoutX="542.0" layoutY="580.0" prefHeight="51.0" prefWidth="218.0" />
+      <JFXButton fx:id="drawerButton" buttonType="RAISED" defaultButton="true" graphicTextGap="15.0" layoutX="662.0" layoutY="19.0" onMousePressed="#showsidebar" prefHeight="51.0" prefWidth="179.0" ripplerFill="WHITE" style="-fx-background-color: #26c6da; -fx-background-radius: 0;" text="Default" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIcon glyphName="NAVICON" size="1.5em" />
+         </graphic>
+      </JFXButton>
+      <JFXColorPicker layoutX="761.0" layoutY="594.0" />
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" prefHeight="635.0" prefWidth="144.0" />
+      <JFXHamburger fx:id="myHamburger" layoutX="811.0" layoutY="95.0" onMousePressed="#showsidebar" />
+      <TextField fx:id="tf" layoutX="468.0" layoutY="103.0" />
+   </children>
+</AnchorPane>

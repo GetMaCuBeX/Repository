@@ -1,0 +1,11 @@
+FontAwesomeIcon:hover{
+    -fx-cursor: hand;
+}
+FontAwesomeIcon{
+    
+    -fx-fill: white;
+}
+
+.glph-icon{
+    -fx-fill: white;
+}

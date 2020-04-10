@@ -1,0 +1,33 @@
+.root {
+    /*-fx-background-color: #393739;*/
+    /*-fx-base: rgb(132, 145, 47);*/ 
+    -fx-background-color: #BDBDBD;
+    -fx-font-size: 16;
+    -fx-font-family: 'Code39Azalea',sans-serif,'Input Mono', 'Courier new',  'Monospace' ;
+}
+
+#ap{    
+
+    /*-fx-background-color: #BDBDBD;*/
+    /*-fx-font-size: 16;*/
+    /*-fx-font-family: 'Code39Azalea',sans-serif,'Input Mono', 'Courier new',  'Monospace' ;*/
+    /*    -fx-background-color: #BDBDBD;
+        -fx-font-size: 20;
+        -fx-font-family: 'Code39Azalea',sans-serif,'Input Mono', 'Courier new',  'Monospace' ;*/
+    /*-fx-background-color: #F7F7F7;*/ 
+    /*-fx-background-image: url("images/Linux3.jpg");*/
+    /*-fx-background-image: url("images/TeamOS21.png");*/
+}
+
+
+
+.button{    
+    /*-fx-font-size: 20;*/
+
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.button:hover , .color-picker:hover{
+    -fx-cursor: hand;
+}
