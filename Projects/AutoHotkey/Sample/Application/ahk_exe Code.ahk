@@ -17,6 +17,12 @@ Return
     KeyWait, XButton2
 Return
 ; =========================================================================================== [HOTKEY]
+~LControl & XButton1::
+	if IsMouseOver_("ahk_exe Code.exe")
+		SendInput, ^+{u}
+    KeyWait, XButton1
+Return
+; =========================================================================================== [HOTKEY]
 F2::
 	if IsMouseOver_("ahk_exe Code.exe")
 		SendInput, ^h
