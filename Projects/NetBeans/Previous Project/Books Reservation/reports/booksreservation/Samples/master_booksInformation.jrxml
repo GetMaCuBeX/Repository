@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="booksInformation" language="groovy" pageWidth="612" pageHeight="792" columnWidth="598" leftMargin="7" rightMargin="7" topMargin="7" bottomMargin="7" uuid="ec7af85d-14c5-4b8d-93b8-6340ba9787c4">
+	<property name="ireport.zoom" value="1.2100000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idbooks" class="java.lang.Integer"/>
+	<parameter name="remainingcopy" class="java.lang.Integer" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+bi.imgblob AS booksimage,
+b.barcode,
+b.isbn,
+b.title,
+b.pages,
+b.description,
+b.`language`,
+b.cost,
+b.purchasedcost,
+b.copynumber,
+b.acquireddate,
+b.isborrowable,
+b.category_name
+FROM
+books AS b
+LEFT JOIN booksimage AS bi ON b.idbooks = bi.books_idbooks
+WHERE
+b.idbooks = $P{idbooks}]]>
+	</queryString>
+	<field name="booksimage" class="java.io.InputStream"/>
+	<field name="barcode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="isbn" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="title" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pages" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="language" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cost" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="purchasedcost" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="copynumber" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="acquireddate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="isborrowable" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="category_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="62" splitType="Stretch">
+			<frame>
+				<reportElement uuid="f0160bd0-2b2c-41cd-a3e0-899ece6b2424" stretchType="RelativeToTallestObject" mode="Opaque" x="-7" y="-7" width="612" height="69" backcolor="#006699"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="ddb6b869-8f2d-4162-a7d1-ae2815f6aac7" stretchType="RelativeToTallestObject" x="15" y="12" width="571" height="45" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Tahoma" size="30" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="146" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="aed0990e-d42b-4d44-8759-d977b6511500" stretchType="RelativeToBandHeight" x="488" y="120" width="110" height="26"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="none">
+					<jr:codeExpression><![CDATA[$F{barcode}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+			<frame>
+				<reportElement uuid="ec2ead7f-f9f6-4bf1-b1f9-c7ba349c1c25" stretchType="RelativeToBandHeight" x="488" y="5" width="110" height="110"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle" isUsingCache="true">
+					<reportElement uuid="415f1b04-e385-4d23-8032-1d8fbf580d9d" x="5" y="5" width="100" height="100"/>
+					<imageExpression><![CDATA[$F{booksimage}]]></imageExpression>
+				</image>
+			</frame>
+			<frame>
+				<reportElement uuid="a380eb48-ffbd-4a1d-a72f-f8de16defadb" x="0" y="5" width="483" height="141"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textField>
+					<reportElement uuid="823a016c-dceb-479c-9d16-c774d04c26ab" x="6" y="20" width="180" height="15"/>
+					<box>
+						<bottomPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Category:  "+$F{category_name}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="8c229529-7ad8-43d9-8808-a2b489cc70a6" x="5" y="106" width="180" height="15"/>
+					<box>
+						<bottomPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[((!$F{copynumber}.equals(null))?"Total Copies:  "+$F{copynumber}:"Total Copies:  ")]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="647707e7-9a1f-4517-a76b-775a3c10ea53" x="6" y="35" width="180" height="15"/>
+					<box>
+						<bottomPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(($F{isborrowable} == true)?"Loanable:  YES":"Loanable:  NO")]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="6dbd6590-f666-4979-9194-7257da24fc7a" x="6" y="5" width="180" height="15"/>
+					<box>
+						<bottomPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[((!$F{acquireddate}.equals(null))?"Acquired Date:  "+(new SimpleDateFormat("MMMM dd, yyyy").format($F{acquireddate})):"Acquired Date:  ")]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="9009e8d8-542c-498a-bcee-dee6a039e935" x="6" y="50" width="180" height="15"/>
+					<box>
+						<bottomPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[((!$F{pages}.equals(null))?"Pages:  "+$F{pages}:"Pages:  ")]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="8c229529-7ad8-43d9-8808-a2b489cc70a6" x="5" y="121" width="180" height="15"/>
+					<box>
+						<bottomPen lineWidth="0.25"/>
+					</box>
+					<textElement>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Remaining:  "+$P{remainingcopy}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="9c48505d-140a-42d0-94b1-66bf4a9c2c99" x="191" y="5" width="287" height="141"/>
+				<box topPadding="3" leftPadding="3" bottomPadding="3" rightPadding="3">
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[((!$F{description}.equals(null))?"Description:  "+$F{description}:"Description:  ")]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="2" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="17deae59-cad1-4179-b506-e842ad989ae6" isPrintRepeatedValues="false" x="-7" y="0" width="612" height="1" isRemoveLineWhenBlank="true"/>
+				<subreportParameter name="idbooks">
+					<subreportParameterExpression><![CDATA[$P{idbooks}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["D:\\MaCuBeX\\My Documents\\NetBeansProjects\\GUI\\Books Reservation\\reports\\booksreservation\\master_booksInformation_subreport_Borrowed.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport runToBottom="false">
+				<reportElement uuid="2b1624f8-ee7f-4124-8857-c85b110825ea" positionType="Float" isPrintRepeatedValues="false" x="-7" y="1" width="612" height="1" isRemoveLineWhenBlank="true"/>
+				<subreportParameter name="idbooks">
+					<subreportParameterExpression><![CDATA[$P{idbooks}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["D:\\MaCuBeX\\My Documents\\NetBeansProjects\\GUI\\Books Reservation\\reports\\booksreservation\\master_booksInformation_subreport_Returned.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="19">
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement uuid="d88f9ac9-72af-40be-a7d0-cb9d7635063b" x="5" y="4" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="498c492b-be3e-4049-aa6a-9bd9c44da6dd" mode="Opaque" x="566" y="4" width="30" height="13"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" of"+" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5c562b48-b0d2-4c98-8c94-1b1dd7edb053" mode="Opaque" x="371" y="4" width="195" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

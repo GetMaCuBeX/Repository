@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="master_booksInformation_subreport_Borrowed" language="groovy" pageWidth="612" pageHeight="752" columnWidth="600" leftMargin="6" rightMargin="6" topMargin="6" bottomMargin="6" uuid="6bb44438-0243-48a3-9a8d-058ec6a9c804">
+	<property name="ireport.zoom" value="1.24184264611831"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idbooks" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+bi.imgblob as booksimage,
+b.barcode,
+b.isbn,
+b.title,
+b.pages,
+b.description,
+b.`language`,
+b.cost,
+b.purchasedcost,
+b.copynumber,
+b.acquireddate,
+b.isborrowable,
+b.category_name,
+m.idnumber,
+m.firstname,
+m.middleinitial,
+m.lastname,
+mi.imgblob as membersimage,
+br.borroweddate,
+br.borrowedduedate,
+br.copies,
+br.returneddate,
+br.finedamount,
+br.`status`,
+br.returnedcopies,
+br.remarks,
+br.notes,
+m.dateofbirth,
+m.gender,
+m.membertype
+FROM
+books AS b
+LEFT JOIN booksimage AS bi ON b.idbooks = bi.books_idbooks
+LEFT JOIN borrow AS br ON b.idbooks = br.books_idbooks
+LEFT JOIN members AS m ON br.members_idmembers = m.idmembers
+LEFT JOIN membersimage AS mi ON m.idmembers = mi.members_idmembers
+WHERE
+b.idbooks = $P{idbooks} AND
+br.`status` = "Returned" AND
+br.finedamount > 0
+ORDER BY
+br.borroweddate ASC]]>
+	</queryString>
+	<field name="booksimage" class="java.io.InputStream"/>
+	<field name="barcode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="isbn" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="title" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pages" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="language" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cost" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="purchasedcost" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="copynumber" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="acquireddate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="isborrowable" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="category_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idnumber" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="firstname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="middleinitial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lastname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="membersimage" class="java.io.InputStream"/>
+	<field name="borroweddate" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="borrowedduedate" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="copies" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="returneddate" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="finedamount" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="returnedcopies" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="remarks" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="notes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dateofbirth" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gender" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="membertype" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band/>
+	</title>
+	<columnHeader>
+		<band height="29">
+			<frame>
+				<reportElement uuid="f0160bd0-2b2c-41cd-a3e0-899ece6b2424" stretchType="RelativeToTallestObject" mode="Opaque" x="-7" y="0" width="613" height="29" backcolor="#0087CC"/>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="d254d32f-9509-4ea9-91ea-3871ae7c6ecf" x="7" y="3" width="599" height="22"/>
+					<textElement verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[((!$F{status}.equals(null))
+    ?$F{status} +" Members"
+    :"")]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="116" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="efe35d1a-ecf2-43ee-9afe-77054f9bc5d6" x="100" y="48" width="106" height="13"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA["Copies: "+$F{copies}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="aa22c0d7-d951-43ae-a5f8-0be1e5c86b96" x="100" y="23" width="223" height="18"/>
+				<box rightPadding="0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{firstname}.toUpperCase()+" "+$F{middleinitial}.toUpperCase()+". "+$F{lastname}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="7ef9f8c3-bf54-4ced-a95e-02c2231266ce" x="100" y="61" width="223" height="13"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA["Date: "+(new SimpleDateFormat("MMMM dd, yyyy hh:mm a").format($F{borroweddate}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="066189dd-7b17-47d8-b55c-aa412fed6aef" x="0" y="101" width="95" height="15"/>
+				<box rightPadding="0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{membertype}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="7a213289-02d4-4edb-b8f3-ddc306cf2304" x="100" y="5" width="132" height="18" isRemoveLineWhenBlank="true"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idnumber}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="7d2bdc7c-3c34-470c-957a-fe10d8e8b3bc" x="100" y="74" width="223" height="13"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA["Due:  "+(new SimpleDateFormat("MMMM dd, yyyy hh:mm a").format($F{borrowedduedate}))]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement uuid="ec2ead7f-f9f6-4bf1-b1f9-c7ba349c1c25" stretchType="RelativeToBandHeight" x="0" y="5" width="95" height="95"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle" isUsingCache="true">
+					<reportElement uuid="415f1b04-e385-4d23-8032-1d8fbf580d9d" x="6" y="7" width="85" height="85"/>
+					<imageExpression><![CDATA[$F{membersimage}]]></imageExpression>
+				</image>
+			</frame>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="eaa788f1-b373-4668-8024-7b56b06582f3" x="323" y="5" width="277" height="54"/>
+				<box topPadding="3" leftPadding="3" bottomPadding="3" rightPadding="3">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[((!$F{notes}.equals(null))?"Notes:  "+$F{notes}:"Notes:  ")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="7d2bdc7c-3c34-470c-957a-fe10d8e8b3bc" x="100" y="87" width="223" height="13"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[(
+    (!$F{returneddate}.equals(null))
+    ?"Returned:  "+(new SimpleDateFormat("MMMM dd, yyyy hh:mm a").format($F{returneddate}))
+    :"Returned:  "
+)]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="7d2bdc7c-3c34-470c-957a-fe10d8e8b3bc" x="100" y="103" width="106" height="13"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA["Fines: "+$F{finedamount}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="eaa788f1-b373-4668-8024-7b56b06582f3" positionType="Float" x="323" y="61" width="277" height="54"/>
+				<box topPadding="3" leftPadding="3" bottomPadding="3" rightPadding="3">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[((!$F{remarks}.equals(null))?"Remarks:  "+$F{remarks}:"Remarks:  ")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="efe35d1a-ecf2-43ee-9afe-77054f9bc5d6" x="206" y="103" width="117" height="13"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA["Returned Copies: "+$F{returnedcopies}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

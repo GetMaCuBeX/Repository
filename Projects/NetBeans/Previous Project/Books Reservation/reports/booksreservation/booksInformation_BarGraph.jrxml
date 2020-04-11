@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="booksInformation_BarGraph" language="groovy" pageWidth="612" pageHeight="752" columnWidth="600" leftMargin="6" rightMargin="6" topMargin="6" bottomMargin="6" uuid="6bb44438-0243-48a3-9a8d-058ec6a9c804">
+	<property name="ireport.zoom" value="1.1"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="51"/>
+	<parameter name="dateFrom" class="java.util.Date"/>
+	<parameter name="dateTo" class="java.util.Date"/>
+	<parameter name="title" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT DISTINCT
+b.idbooks,
+b.barcode,
+b.title,
+b.pages,
+b.description,
+b.`language`,
+b.cost,
+b.purchasedcost,
+b.copynumber,
+b.acquireddate,
+b.isborrowable,
+b.category_name,
+Count(lbb.books_idbooks)
+FROM
+logsborrowedbooks AS lbb
+LEFT JOIN books AS b ON lbb.books_idbooks = b.idbooks
+WHERE
+lbb.borroweddate BETWEEN $P{dateFrom} AND $P{dateTo}
+
+GROUP BY
+b.idbooks,
+b.barcode,
+b.title,
+b.pages,
+b.description,
+b.`language`,
+b.cost,
+b.purchasedcost,
+b.copynumber,
+b.acquireddate,
+b.isborrowable,
+b.category_name
+ORDER BY
+b.category_name ASC,
+Count(lbb.books_idbooks) DESC]]>
+	</queryString>
+	<field name="idbooks" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="barcode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="title" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pages" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="language" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cost" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="purchasedcost" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="copynumber" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="acquireddate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="isborrowable" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="category_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Count(lbb.books_idbooks)" class="java.lang.Long"/>
+	<group name="category" isStartNewColumn="true" isReprintHeaderOnEachPage="true" keepTogether="true">
+		<groupExpression><![CDATA[$F{category_name}]]></groupExpression>
+		<groupHeader>
+			<band height="34">
+				<frame>
+					<reportElement uuid="f0160bd0-2b2c-41cd-a3e0-899ece6b2424" stretchType="RelativeToTallestObject" mode="Opaque" x="-7" y="0" width="612" height="29" backcolor="#0087CC"/>
+					<textField>
+						<reportElement uuid="8e15fed8-8af3-4188-8fe4-1ad5f8fbebbe" x="7" y="0" width="331" height="29"/>
+						<textElement verticalAlignment="Middle">
+							<font size="14" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{category_name}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement uuid="f332be8d-9285-4086-b7e1-09aa0dcbf536" x="338" y="0" width="269" height="29" forecolor="#FFFFFF"/>
+						<box rightPadding="1"/>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font size="14" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA["Date: "+(new SimpleDateFormat("MMM dd, yyyy").format($P{dateFrom}))+" - "+(new SimpleDateFormat("MMM dd, yyyy").format($P{dateTo}))]]></textFieldExpression>
+					</textField>
+				</frame>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="374">
+				<bar3DChart>
+					<chart isShowLegend="false" renderType="svg" theme="eye.candy.sixties">
+						<reportElement uuid="772a1da3-ed83-4ff2-8b84-12a93f5d52a2" stretchType="RelativeToBandHeight" x="0" y="0" width="600" height="374"/>
+						<chartTitle/>
+						<chartSubtitle/>
+						<chartLegend position="Left"/>
+					</chart>
+					<categoryDataset>
+						<dataset resetType="Group" resetGroup="category"/>
+						<categorySeries>
+							<seriesExpression><![CDATA["Dummy Series"]]></seriesExpression>
+							<categoryExpression><![CDATA[$F{title}]]></categoryExpression>
+							<valueExpression><![CDATA[$F{Count(lbb.books_idbooks)}]]></valueExpression>
+							<labelExpression><![CDATA[$F{Count(lbb.books_idbooks)} +" Items"]]></labelExpression>
+						</categorySeries>
+					</categoryDataset>
+					<bar3DPlot isShowLabels="true" yOffset="10.0">
+						<plot backgroundAlpha="0.0" foregroundAlpha="1.0" labelRotation="0.0"/>
+						<itemLabel/>
+						<categoryAxisFormat labelRotation="0.0">
+							<axisFormat verticalTickLabels="false">
+								<tickLabelFont/>
+							</axisFormat>
+						</categoryAxisFormat>
+					</bar3DPlot>
+				</bar3DChart>
+			</band>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="62">
+			<frame>
+				<reportElement uuid="f0160bd0-2b2c-41cd-a3e0-899ece6b2424" stretchType="RelativeToTallestObject" mode="Opaque" x="-7" y="-7" width="612" height="69" backcolor="#006699"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="ddb6b869-8f2d-4162-a7d1-ae2815f6aac7" stretchType="RelativeToTallestObject" x="21" y="12" width="571" height="45" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="30" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{title}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="7"/>
+	</pageHeader>
+	<detail>
+		<band height="15">
+			<frame>
+				<reportElement uuid="a355b76f-625b-48f7-b7b5-24a5fc3f4778" x="0" y="0" width="599" height="15"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textField>
+					<reportElement uuid="080dd14b-dd4d-4748-aec2-7800bd1ce4f5" x="0" y="0" width="84" height="15"/>
+					<box>
+						<leftPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{Count(lbb.books_idbooks)}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="2d97b969-b768-4332-8f0d-1ce95c8a0bd1" x="84" y="0" width="515" height="15"/>
+					<box leftPadding="3">
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement uuid="5c562b48-b0d2-4c98-8c94-1b1dd7edb053" mode="Opaque" x="370" y="4" width="195" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="498c492b-be3e-4049-aa6a-9bd9c44da6dd" mode="Opaque" x="565" y="4" width="30" height="13"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" of"+" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement uuid="d88f9ac9-72af-40be-a7d0-cb9d7635063b" x="4" y="4" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="master_booksInformation_subreport_Borrowed" language="groovy" pageWidth="612" pageHeight="752" columnWidth="600" leftMargin="6" rightMargin="6" topMargin="6" bottomMargin="6" uuid="6bb44438-0243-48a3-9a8d-058ec6a9c804">
+	<property name="ireport.zoom" value="1.24184264611831"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idbooks" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+bi.imgblob as booksimage,
+b.barcode,
+b.isbn,
+b.title,
+b.pages,
+b.description,
+b.`language`,
+b.cost,
+b.purchasedcost,
+b.copynumber,
+b.acquireddate,
+b.isborrowable,
+b.category_name,
+m.idnumber,
+m.firstname,
+m.middleinitial,
+m.lastname,
+mi.imgblob as membersimage,
+br.borroweddate,
+br.borrowedduedate,
+br.copies,
+br.returneddate,
+br.finedamount,
+br.`status`,
+br.returnedcopies,
+br.remarks,
+br.notes,
+m.dateofbirth,
+m.gender,
+m.membertype
+FROM
+books AS b
+LEFT JOIN booksimage AS bi ON b.idbooks = bi.books_idbooks
+LEFT JOIN borrow AS br ON b.idbooks = br.books_idbooks
+LEFT JOIN members AS m ON br.members_idmembers = m.idmembers
+LEFT JOIN membersimage AS mi ON m.idmembers = mi.members_idmembers
+WHERE
+b.idbooks = $P{idbooks} AND
+br.`status` = "Borrowed"
+ORDER BY
+br.borroweddate ASC]]>
+	</queryString>
+	<field name="booksimage" class="java.io.InputStream"/>
+	<field name="barcode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="isbn" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="title" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pages" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="language" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cost" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="purchasedcost" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="copynumber" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="acquireddate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="isborrowable" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="category_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idnumber" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="firstname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="middleinitial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lastname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="membersimage" class="java.io.InputStream"/>
+	<field name="borroweddate" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="borrowedduedate" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="copies" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="returneddate" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="finedamount" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="returnedcopies" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="remarks" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="notes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dateofbirth" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gender" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="membertype" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<columnHeader>
+		<band height="29"/>
+	</columnHeader>
+	<detail>
+		<band height="186" splitType="Stretch"/>
+	</detail>
+</jasperReport>

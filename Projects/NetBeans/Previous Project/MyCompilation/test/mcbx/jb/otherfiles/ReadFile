@@ -1,0 +1,7 @@
+/* subpackage */
+ImageIcon passedIcon  = new ImageIcon(ClassFile.class.getResource("images/passed.png"));
+/* same package */
+ImageIcon passedIcon  = new ImageIcon(ClassFile.class.getResource("passed.png"));
+/* */
+String SUBREPORT_DIR = System.getProperty("user.dir")+"\\reports\\booksreservation\\)";
+"C:\\Users\\jOwe\\Desktop\\Siraflor\\Books Reservation\\reports\\booksreservation\\"
