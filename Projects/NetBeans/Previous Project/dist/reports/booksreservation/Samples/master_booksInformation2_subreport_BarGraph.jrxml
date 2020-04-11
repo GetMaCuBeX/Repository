@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="master_booksInformation_subreport_Borrowed" language="groovy" pageWidth="612" pageHeight="752" columnWidth="600" leftMargin="6" rightMargin="6" topMargin="6" bottomMargin="6" uuid="6bb44438-0243-48a3-9a8d-058ec6a9c804">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="dateFrom" class="java.util.Date"/>
+	<parameter name="dateTo" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT
+lbb.books_idbooks,
+lbb.borroweddate,
+b.barcode,
+b.title,
+b.pages,
+b.description,
+b.`language`,
+b.cost,
+b.purchasedcost,
+b.copynumber,
+b.acquireddate,
+b.isborrowable,
+b.category_name
+FROM
+logsborrowedbooks AS lbb
+INNER JOIN books AS b ON lbb.books_idbooks = b.idbooks
+WHERE
+lbb.borroweddate BETWEEN $P{dateFrom} AND $P{dateTo}]]>
+	</queryString>
+	<field name="books_idbooks" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="borroweddate" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="barcode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="title" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pages" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="language" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cost" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="purchasedcost" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="copynumber" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="acquireddate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="isborrowable" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="category_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<pageHeader>
+		<band height="50">
+			<staticText>
+				<reportElement uuid="4872579a-c853-49a9-878c-e38868bf9a6c" x="0" y="0" width="44" height="22" forecolor="#000000"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="f332be8d-9285-4086-b7e1-09aa0dcbf536" x="44" y="0" width="379" height="22" forecolor="#000000"/>
+				<textElement verticalAlignment="Top">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new SimpleDateFormat("MMMM dd, yyyy").format($P{dateFrom}))+" - "+(new SimpleDateFormat("MMMM dd, yyyy").format($P{dateTo}))]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="351">
+			<pieChart>
+				<chart>
+					<reportElement uuid="98577b4a-8195-4aee-855f-d3c1ab635d6d" x="0" y="0" width="600" height="264"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{title}]]></keyExpression>
+					<valueExpression><![CDATA[$F{books_idbooks}]]></valueExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+		</band>
+	</summary>
+</jasperReport>
