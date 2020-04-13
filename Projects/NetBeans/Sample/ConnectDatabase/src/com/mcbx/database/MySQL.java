@@ -119,6 +119,28 @@ public class MySQL {
             printConnection();
         }
     }
+    
+    // Establish connection
+    public void connectToServer() {
+        try {
+            try {
+                Class.forName(this.getDRIVER());
+            } catch (ClassNotFoundException e) {
+                this.setConnection(null);
+               System.err.println(e.getMessage());
+                return;
+            }
+            /* this.setConnection(jdbc:mysql://localhost:3306/databasename,root,empty) */
+            this.setDbURL(this.getURL() + "" + this.getServerHostName() + ":" + this.getPortNumber() + "/" + this.getSchema());
+            this.setConnection(DriverManager.getConnection(this.getDbURL(), this.getUserName(), this.getPassword())); 
+               System.out.println("\t@Database URL:\t[" + this.getDbURL() + "]");
+        } catch (SQLException e) { 
+            this.setConnection(null);
+               System.err.println(e.getMessage());
+               printConnection();
+            printConnection();
+        }
+    }
 
     /* display exception message*/
     private void printConnection() {

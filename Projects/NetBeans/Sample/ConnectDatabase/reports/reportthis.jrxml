@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="booksInformation" language="groovy" pageWidth="612" pageHeight="792" columnWidth="598" leftMargin="7" rightMargin="7" topMargin="7" bottomMargin="7" uuid="ec7af85d-14c5-4b8d-93b8-6340ba9787c4">
+	<property name="ireport.zoom" value="1.2100000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idmembers" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fullname" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["JOEL A BENALDO"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+m.idnumber,
+m.dateofbirth,
+m.gender,
+m.address1,
+m.address2,
+m.phonenumber1,
+m.phonenumber2,
+m.emailaddress,
+m.membertype,
+mi.imgblob,
+b.barcode,
+b.title,
+br.copies,
+br.borroweddate,
+br.borrowedduedate,
+br.returneddate,
+br.finedamount,
+br.`status`,
+br.returnedcopies,
+br.remarks,
+br.notes,
+m.firstname,
+m.middleinitial,
+m.lastname,
+mi.imgblob
+FROM
+borrow AS br
+LEFT JOIN books AS b ON br.books_idbooks = b.idbooks
+RIGHT OUTER JOIN members AS m ON m.idmembers = br.members_idmembers
+LEFT JOIN membersimage AS mi ON mi.members_idmembers = m.idmembers
+WHERE
+m.idmembers = $P{idmembers}
+ORDER BY
+br.`status` ASC,
+br.borroweddate ASC]]>
+	</queryString>
+	<field name="idnumber" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dateofbirth" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gender" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="address1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="address2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="phonenumber1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="phonenumber2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="emailaddress" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="membertype" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="imgblob" class="java.io.InputStream">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="barcode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="title" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="copies" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="borroweddate" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="borrowedduedate" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="returneddate" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="finedamount" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="returnedcopies" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="remarks" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="notes" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="firstname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="middleinitial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lastname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="Status" isReprintHeaderOnEachPage="true" keepTogether="true">
+		<groupExpression><![CDATA[$F{status}]]></groupExpression>
+		<groupHeader>
+			<band height="29">
+				<frame>
+					<reportElement uuid="f0160bd0-2b2c-41cd-a3e0-899ece6b2424" stretchType="RelativeToTallestObject" mode="Opaque" x="-7" y="0" width="612" height="29" backcolor="#0087CC"/>
+					<staticText>
+						<reportElement uuid="44f41e0e-7182-4a53-be72-95d7d9e9932a" x="237" y="0" width="128" height="29"/>
+						<box>
+							<pen lineWidth="1.0"/>
+							<topPen lineWidth="0.0"/>
+							<leftPen lineWidth="0.0"/>
+							<bottomPen lineWidth="0.0"/>
+							<rightPen lineWidth="0.0"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font isBold="true"/>
+						</textElement>
+						<text><![CDATA[Borrowed Date]]></text>
+					</staticText>
+				</frame>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="d254d32f-9509-4ea9-91ea-3871ae7c6ecf" x="0" y="0" width="124" height="29"/>
+					<textElement verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[((!$F{status}.equals(null))
+    ?$F{status} +" Books"
+    :"Books")]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="44f41e0e-7182-4a53-be72-95d7d9e9932a" x="124" y="0" width="51" height="29"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Copies]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="44f41e0e-7182-4a53-be72-95d7d9e9932a" x="180" y="0" width="50" height="29"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Returned]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="44f41e0e-7182-4a53-be72-95d7d9e9932a" x="358" y="0" width="118" height="29"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Borrowed Due Date]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="44f41e0e-7182-4a53-be72-95d7d9e9932a" x="480" y="0" width="118" height="29"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Returned Date]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="9"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="62" splitType="Stretch">
+			<frame>
+				<reportElement uuid="f0160bd0-2b2c-41cd-a3e0-899ece6b2424" stretchType="RelativeToTallestObject" mode="Opaque" x="-7" y="-7" width="612" height="69" backcolor="#006699"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement uuid="ddb6b869-8f2d-4162-a7d1-ae2815f6aac7" stretchType="RelativeToTallestObject" x="17" y="18" width="572" height="32" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Tahoma" size="24" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{idnumber}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="120" splitType="Stretch">
+			<textField>
+				<reportElement uuid="52f4c94a-13b5-4918-bab6-b8596a66678c" x="118" y="5" width="331" height="20"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{firstname}.toUpperCase()+" "+$F{middleinitial}.toUpperCase()+". "+$F{lastname}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement uuid="ec2ead7f-f9f6-4bf1-b1f9-c7ba349c1c25" stretchType="RelativeToBandHeight" x="0" y="5" width="110" height="110"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<image scaleImage="RealSize" hAlign="Center" vAlign="Middle" isUsingCache="true" onErrorType="Blank">
+					<reportElement uuid="415f1b04-e385-4d23-8032-1d8fbf580d9d" x="5" y="5" width="100" height="100"/>
+					<graphicElement>
+						<pen lineWidth="0.0"/>
+					</graphicElement>
+					<imageExpression><![CDATA[$F{imgblob}]]></imageExpression>
+				</image>
+			</frame>
+			<textField>
+				<reportElement uuid="c83a592d-a720-4b89-bb8d-fb42e3eff6a7" positionType="Float" x="118" y="99" width="480" height="15"/>
+				<box bottomPadding="1">
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[((!$F{address2}.equals(null))
+    ?"Address 2:  "+$F{address2}
+    :"Address 2:  ")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="22eb6f5c-eb00-4bc5-a9c8-ea7d60e34dc3" x="118" y="84" width="480" height="15"/>
+				<box bottomPadding="1">
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font isUnderline="false"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[((!$F{address1}.equals(null))
+    ?"Address 1:  "+$F{address1}
+    :"Address 1:  ")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1b42419d-04b6-448d-a957-74697bca847e" x="118" y="69" width="480" height="15"/>
+				<box bottomPadding="1">
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[((!$F{phonenumber2}.equals(null))
+    ?"Phone 2:  "+$F{phonenumber2}
+    :"Phone 2:  ")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="10551c31-9af8-4b36-b890-3c83eaa0503c" x="118" y="54" width="480" height="15"/>
+				<box bottomPadding="1">
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[((!$F{phonenumber1}.equals(null))
+    ?"Phone 1:  "+$F{phonenumber1}
+    :"Phone 1:  ")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6067c991-f656-4792-a2a8-d117a09adb2c" x="449" y="5" width="149" height="20" forecolor="#000000"/>
+				<box rightPadding="5"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{membertype}.toUpperCase()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="2" splitType="Stretch">
+			<line>
+				<reportElement uuid="29c641ce-fef9-4dec-a064-9072cb3932b5" x="-7" y="0" width="612" height="1"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="84" splitType="Stretch">
+			<line>
+				<reportElement uuid="01ea4cfa-7efd-40a9-8302-f9c28cc5e1a8" x="-7" y="0" width="612" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="e21f7b37-dc2e-4f38-8e62-0291ffc6847f" positionType="Float" x="0" y="64" width="500" height="15" isRemoveLineWhenBlank="true"/>
+				<box bottomPadding="1">
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="1b745f11-cb38-4bd6-bf1d-ead62b1d7cb8" x="124" y="4" width="51" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{copies}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="9bfb3a6f-3eab-4550-a161-29ab9ef7ab69" x="180" y="4" width="50" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{returnedcopies}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="e5a99617-57dc-4277-be3e-d8ce25e79535" x="234" y="4" width="118" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[(new SimpleDateFormat("MMMM dd, yyyy hh:MM a").format($F{borroweddate}))]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement uuid="ef1b0d32-8bcd-44a2-b8e3-e12abfb3ec45" x="0" y="4" width="124" height="50"/>
+				<jr:Code39 xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA[$F{barcode}]]></jr:codeExpression>
+				</jr:Code39>
+			</componentElement>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="bc0b3fef-52fe-42af-ab0d-859396e70708" x="480" y="4" width="118" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[(new SimpleDateFormat("MMMM dd, yyyy hh:MM a").format($F{returneddate}))]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="ffc25263-e849-45e0-a30e-2e728ed60e0b" positionType="Float" x="124" y="41" width="474" height="15" isRemoveLineWhenBlank="true"/>
+				<box bottomPadding="0">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font isUnderline="false"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[((!$F{remarks}.equals(null))
+    ?"Remarks: "+$F{remarks}
+    :"")]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="1b15a2ff-ede8-4a80-aa9d-785960099740" x="124" y="26" width="474" height="15" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true"/>
+				<box bottomPadding="0">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font isUnderline="false"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[((!$F{notes}.equals(null))
+?"Notes: "+$F{notes}
+    :"")]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="029e87e3-f4e2-486a-ba31-1c0cf30075d1" x="358" y="4" width="118" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[(new SimpleDateFormat("MMMM dd, yyyy hh:MM a").format($F{borrowedduedate}))]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="32a639bc-e7c9-46ee-b7a7-71599d35d54f" positionType="FixRelativeToBottom" x="505" y="64" width="93" height="15" isRemoveLineWhenBlank="true"/>
+				<box bottomPadding="1">
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(
+    ($F{finedamount}.equals(null))
+    ?""
+    :"Fines:  "+$F{finedamount}
+)]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17" splitType="Stretch">
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement uuid="d88f9ac9-72af-40be-a7d0-cb9d7635063b" x="7" y="4" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5c562b48-b0d2-4c98-8c94-1b1dd7edb053" mode="Opaque" x="373" y="4" width="195" height="13"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="498c492b-be3e-4049-aa6a-9bd9c44da6dd" mode="Opaque" x="568" y="4" width="30" height="13"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" of"+" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

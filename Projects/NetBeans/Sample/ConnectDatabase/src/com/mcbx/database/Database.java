@@ -24,6 +24,16 @@ public class Database {
         return null;
     }
 
+    public static Connection getConnectionMySQL(MySQL mysqlConnection) {
+        try {
+            mysqlConnection.connectToServer();
+            Connection conn = mysqlConnection.getConnection();
+            return conn;
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        return null;
+    }
 //    public static void initiliazeConnectionMySQL(MySQL mysqlConnection) {
 //        try {
 //            .initiliazeConnection(mysqlConnection);
