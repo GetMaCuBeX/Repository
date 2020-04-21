@@ -15,6 +15,12 @@ Return
 ; =========================================================================================== [HOTKEY] [EXIT APP]
 #Include %A_ScriptDir%\\Script\ExitApp.ahk
 
+; =========================================================================================== [HOTKEY] [ICON LOVER]
+#IfWinActive ahk_exe icolover.exe
+#Include %A_ScriptDir%\\Application\ahk_exe icolover.ahk
+; =========================================================================================== [HOTKEY] [ART ICONS]
+#IfWinActive ahk_exe ARTICONS.exe
+#Include %A_ScriptDir%\\Application\ahk_exe ARTICONS.ahk
 ; =========================================================================================== [HOTKEY] [BOOTSTRAP STUDIO]
 #IfWinActive ahk_exe Bootstrap Studio.exe
 #Include %A_ScriptDir%\\Application\ahk_exe Bootstrap Studio.ahk
@@ -39,6 +45,9 @@ Return
 ; =========================================================================================== [HOTKEY] [JCREATOR PRO]
 #IfWinActive ahk_exe JCreator.exe
 #Include %A_ScriptDir%\\Application\ahk_exe JCreator.ahk
+; =========================================================================================== [HOTKEY] [NETBEANS IDE]
+#IfWinActive ahk_exe navicat.exe
+#Include %A_ScriptDir%\\Application\ahk_exe navicat.ahk
 ; =========================================================================================== [HOTKEY] [NETBEANS IDE]
 #IfWinActive ahk_exe netbeans64.exe
 #Include %A_ScriptDir%\\Application\ahk_exe netbeans64.ahk

@@ -128,6 +128,7 @@ if IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") 
 Return
 ; =========================================================================================== [HOTKEY] [RESTART WINDOWS EXPLORER]
 ^F5::
+KeyWait, F5
 Gosub, restart_windows_explorer
 Return
 ; =========================================================================================== [HOTKEY] [PRINTSCREEN ACTIVE WINDOW]

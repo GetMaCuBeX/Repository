@@ -1,4 +1,4 @@
 ; =========================================================================================== [HOTKEY] [EXIT APP]
-~LControl & Esc::
-ExitApp
+ ~LControl & Esc::
+ ExitApp
 Return

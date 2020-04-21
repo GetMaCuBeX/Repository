@@ -64,6 +64,30 @@ Return
 	Sleep, 50
 	SendInput, {UP 1}
 Return
+; =========================================================================================== [HOTSTRING] [BLOCK COMMENT]
+ :*:/**/::
+	SendInput, /**/
+	Sleep, 100
+	SendInput, {Left 2}
+	Sleep, 50
+	SendInput, !+{f}
+	Sleep, 50
+Return
+; =========================================================================================== [HOTKEY] [BLOCK COMMENT]
+LControl & XButton2::
+	SendInput, /**/
+	Sleep, 100
+	SendInput, {Left 2}
+	Sleep, 50
+	KeyWait, XButton2
+	SendInput, !+{f}
+	Sleep, 50
+Return
+; =========================================================================================== [HOTKEY] [UNDO]
+; LControl & XButton1::
+; 	SendInput, ^{z}
+; 	KeyWait, XButton1
+; Return
 ; =========================================================================================== [HOTKEY] [SHOW HINTS]
 AppsKey::
 	function_netbeans_code_show_hints()
