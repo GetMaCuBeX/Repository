@@ -1,0 +1,111 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : May 2, 2020, 7:17:49 AM
+    Author     : MaCuBeX
+*/
+
+.root {
+    /*-fx-background-color: #393739;*/
+    /*-fx-base: rgb(132, 145, 47);*/
+    /*-fx-font-size: 16;*/
+    -fx-font-family: 'Code39Azalea',sans-serif,'Input Mono', 'Courier new',  'Monospace' ;
+}
+
+#ap{
+    /*-fx-background-color: #F7F7F7;*/
+    -fx-background-color: #BDBDBD;
+    /*-fx-background-image: url("imgLinux3.jpg");*/
+    /*-fx-background-image: url("imgTeamOS21.png");*/
+}
+
+#closeWindow{
+    -fx-graphic: url("icons8_delete_24px.png");
+}
+#maximizeWindow{
+    -fx-graphic: url("icons8_maximize_button_26px.png");
+}
+#minimizeWindow{
+    -fx-graphic: url("icons8_minimize_window_24px.png");
+}
+
+#closeWindow:hover ,#maximizeWindow:hover ,#minimizeWindow:hover{
+   -fx-background-color:  #282923;
+}
+
+
+
+
+.button:hover{
+    -fx-cursor: hand;
+}
+
+
+.label{
+    -fx-font-weight: bold;
+    /*-fx-text-fill: white;*/
+    /*-fx-font-size: 22;*/
+}
+
+.textfield{
+    -fx-background-radius: 0 0 0 0;
+}
+.passwordfield{
+    -fx-background-radius: 0 0 0 0;
+}
+
+
+#buttonlogin , #buttoncancel{
+    -fx-text-fill: white;
+    /*-fx-font-size: 16;*/
+    -fx-font-weight: bold;
+    /*-fx-background-color: linear-gradient(#FFFFFF,#2196F3);*/
+    /*-fx-background-color: #2196f3;*/
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 4 0, 0 0 5 0, 0 0 6 0;
+    -fx-background-radius: 0 0 0 0;
+    /*Color Pallete - 400*/
+    -fx-background-color:  #29b6f6;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1.5 );
+
+}
+
+#buttonlogin:hover {
+    /*-fx-text-fill: black;*/
+    -fx-background-color:
+        radial-gradient(center 50% 50%, radius 100%,  #66bb6a,#388e3c);
+/*        -fx-background-color:
+            linear-gradient(from 0% 93% to 0% 100%, #E0E0E0 0%, #903b12 100%),
+           #c54e2c,
+            #c54e2c,
+            radial-gradient(center 20% 50%, radius 100%, #ea7f4b, #c54e2c);*/
+}
+#buttonlogin:focused {
+    -fx-background-color:
+        radial-gradient(center 50% 50%, radius 100%,  #66bb6a,#388e3c);
+}
+
+/*RADIAL-GRADIENT Color Pallete: 400#, 700#*/
+#buttoncancel:hover {
+    -fx-background-color:
+        radial-gradient(center 50% 50%, radius 100%,  #ef5350,#d32f2f);
+}
+#buttoncancel:focused{
+    -fx-background-color:
+        radial-gradient(center 50% 50%, radius 100%,  #ef5350,#d32f2f);
+}
+
+
+
+
+
+#buttonlogin:pressed, #buttoncancel:pressed {
+    -fx-padding: 10 15 13 15;
+    -fx-background-insets: 1 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+}
+
+
+
